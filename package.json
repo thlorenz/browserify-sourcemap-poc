@@ -1,0 +1,26 @@
+{
+    "name" : "browserify-sourcemap",
+    "version" : "0.0.0",
+    "description" : "Sourcemaps for browserify.",
+    "main" : "browserify-sourcemap.js",
+    "scripts" : {
+        "test" : "node-trap test/*.js"
+    },
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/thlorenz/browserify-sourcemap.git"
+    },
+    "homepage" : "https://github.com/thlorenz/browserify-sourcemap",
+    "dependencies" : {
+    },
+    "devDependencies" : {
+    },
+    "keywords": "browserify sourcemaps" ,
+    "author" : {
+        "name" : "Thorsten Lorenz",
+        "email" : "thlorenz@gmx.de",
+        "url" : "http://thlorenz.com"
+    },
+    "license" : "MIT",
+    "engine" : { "node" : ">=0.6" }
+}
