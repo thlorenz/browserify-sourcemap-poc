@@ -1,7 +1,8 @@
 'use strict';
 var sm = require('source-map');
 var SourceMapGenerator = sm.SourceMapGenerator;
-var smg = new SourceMapGenerator({ file: 'example/bundle.js' });
+var path = require('path');
+var smg = new SourceMapGenerator({ file: 'example/bundle.js', sourceRoot: path.join(__dirname, 'example') });
 
 var fs = require('fs');
 var path = require('path');
@@ -20,6 +21,15 @@ fooLines.forEach(function (line, idx) {
   bundleLines.push(line);
   smg.addMapping({
       source: 'foo.js'
+    , original: { line: idx + 1, column: 0 }
+    , generated: { line: bundleLines.length, column: 0 }
+  });
+});
+
+subfooLines.forEach(function (line, idx) {
+  bundleLines.push(line);
+  smg.addMapping({
+      source: 'sub/foo.js'
     , original: { line: idx + 1, column: 0 }
     , generated: { line: bundleLines.length, column: 0 }
   });
