@@ -1,7 +1,7 @@
 'use strict';
 var sm = require('source-map');
 var SourceMapGenerator = sm.SourceMapGenerator;
-var smg = new SourceMapGenerator({ file: 'example/bundle.js', sourceRoot: './' });
+var smg = new SourceMapGenerator({ file: 'example/bundle.js' });
 
 var fs = require('fs');
 var path = require('path');
@@ -43,9 +43,10 @@ barLines.forEach(function (line, idx) {
   });
 });
 
-bundleLines.push('//@ sourceMappingURL=bundle.js.map');
+var jsonstr= smg.toString();
+var map = new Buffer(jsonstr).toString('base64');
+var mapping = '//@ sourceMappingURL=data:application/json;base64,' + map.toString();
+bundleLines.push(mapping);
 
-var prettyMap = JSON.stringify(JSON.parse(smg.toString()), null, 4);
 
 fs.writeFileSync(path.join(__dirname, 'example/bundle.js'), bundleLines.join('\n') , 'utf-8');
-fs.writeFileSync(path.join(__dirname, 'example/bundle.js.map'), prettyMap , 'utf-8');
