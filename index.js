@@ -25,15 +25,6 @@ fooLines.forEach(function (line, idx) {
   });
 });
 
-subfooLines.forEach(function (line, idx) {
-  bundleLines.push(line);
-  smg.addMapping({
-      source: 'sub/foo.js'
-    , original: { line: idx + 1, column: 0 }
-    , generated: { line: bundleLines.length, column: 0 }
-  });
-});
-
 barLines.forEach(function (line, idx) {
   bundleLines.push(line);
   smg.addMapping({
@@ -43,10 +34,23 @@ barLines.forEach(function (line, idx) {
   });
 });
 
-var jsonstr= smg.toString();
-var map = new Buffer(jsonstr).toString('base64');
-var mapping = '//@ sourceMappingURL=data:application/json;base64,' + map.toString();
-bundleLines.push(mapping);
+function inlineMappings() {
+
+  /*
+  * Inline mappings currently work in:
+  *   Chrome Canary (Version 27.0.1428.0 canary) and up
+  *   Chrome Version 26.0.1410.19 beta
+  *
+  * Inline maps are not working in:
+  *   Chrome official release (Version 25.0.1364.155)
+  */
+
+  var map= smg.toString();
+  var encodedMap = new Buffer(map).toString('base64');
+  var mapping = '//@ sourceMappingURL=data:application/json;base64,' + encodedMap;
+  bundleLines.push(mapping);
+}
 
 
+inlineMappings();
 fs.writeFileSync(path.join(__dirname, 'example/bundle.js'), bundleLines.join('\n') , 'utf-8');
