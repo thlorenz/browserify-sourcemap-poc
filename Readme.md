@@ -15,4 +15,4 @@ Inline maps are **not working in**:
 
   - Chrome official release (Version 25.0.1364.155)
 
-![dev-tools](https://github.com/thlorenz/browserify-sourcemap-poc/blob/master/assets/dev-tools.png)
+![dev-tools](https://raw.github.com/thlorenz/browserify-sourcemap-poc/master/assets/dev-tools.png)
