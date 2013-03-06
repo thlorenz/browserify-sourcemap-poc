@@ -11,12 +11,24 @@ var fooLines = foo.split('\n');
 var bar = fs.readFileSync(require.resolve('./example/bar'), 'utf-8');
 var barLines = bar.split('\n');
 
+var subfoo = fs.readFileSync(require.resolve('./example/sub/foo'), 'utf-8');
+var subfooLines = subfoo.split('\n');
+
 var bundleLines = [];
 
 fooLines.forEach(function (line, idx) {
   bundleLines.push(line);
   smg.addMapping({
       source: 'foo.js'
+    , original: { line: idx + 1, column: 0 }
+    , generated: { line: bundleLines.length, column: 0 }
+  });
+});
+
+subfooLines.forEach(function (line, idx) {
+  bundleLines.push(line);
+  smg.addMapping({
+      source: 'sub/foo.js'
     , original: { line: idx + 1, column: 0 }
     , generated: { line: bundleLines.length, column: 0 }
   });

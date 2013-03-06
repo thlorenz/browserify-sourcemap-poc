@@ -1,21 +1,21 @@
 {
-  "name": "browserify-sourcemap",
+  "name": "browserify-sourcemap-poc",
   "version": "0.0.0",
   "description": "Source mapping urls for browserify proof of concept.",
-  "main": "browserify-sourcemap.js",
+  "main": "browserify-sourcemap-poc.js",
   "scripts": {
     "test": "node index.js && open example/index.html"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/thlorenz/browserify-sourcemap.git"
+    "url": "git://github.com/thlorenz/browserify-sourcemap-poc.git"
   },
-  "homepage": "https://github.com/thlorenz/browserify-sourcemap",
+  "homepage": "https://github.com/thlorenz/browserify-sourcemap-poc",
   "dependencies": {
     "source-map": "~0.1.9"
   },
   "devDependencies": {},
-  "keywords": "browserify sourcemaps",
+  "keywords": "browserify sourcemap poc",
   "author": {
     "name": "Thorsten Lorenz",
     "email": "thlorenz@gmx.de",
