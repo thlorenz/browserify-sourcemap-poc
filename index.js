@@ -2,7 +2,7 @@
 var sm = require('source-map');
 var SourceMapGenerator = sm.SourceMapGenerator;
 var path = require('path');
-var smg = new SourceMapGenerator({ file: 'example/bundle.js', sourceRoot: path.join(__dirname, 'example') });
+var smg = new SourceMapGenerator({ file: '', sourceRoot: path.resolve(__dirname, 'example') });
 
 var fs = require('fs');
 var path = require('path');
@@ -63,4 +63,4 @@ function inlineMappings() {
 
 
 inlineMappings();
-fs.writeFileSync(path.join(__dirname, 'example/bundle.js'), bundleLines.join('\n') , 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'example/build/bundle.js'), bundleLines.join('\n') , 'utf-8');
